@@ -2,12 +2,9 @@ namespace Crypto;
 
 public class RC4
 {
-  public static byte[] StringToByteArr(string str) => str.Select(c => (byte)c).ToArray();
-  public static string ByteArrToString(byte[] arr) => new(arr.Select(b => (char)b).ToArray());
-
   public static byte[] Encrypt(string key, string data)
   {
-    return Encrypt(StringToByteArr(key), StringToByteArr(data));
+    return Encrypt(Utils.StringToByteArr(key), Utils.StringToByteArr(data));
   }
 
   public static byte[] Encrypt(byte[] key, byte[] data)
@@ -47,11 +44,11 @@ public class RC4
 
   public static string DecryptToString(byte[] key, byte[] data)
   {
-    return ByteArrToString(Decrypt(key, data));
+    return Utils.ByteArrToString(Decrypt(key, data));
   }
 
   public static string DecryptToString(string key, byte[] data)
   {
-    return ByteArrToString(Decrypt(StringToByteArr(key), data));
+    return Utils.ByteArrToString(Decrypt(Utils.StringToByteArr(key), data));
   }
 }
